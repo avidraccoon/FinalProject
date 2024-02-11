@@ -27,7 +27,7 @@ public class Game {
     public ObjectNode toJSONNode(){
         ObjectMapper mapper = new ObjectMapper();
         ObjectNode root = mapper.createObjectNode();
-        Object
+        
         for (String playerName : players.keySet()) {
             Player player = players.get(playerName);
         }

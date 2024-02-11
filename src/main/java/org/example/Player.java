@@ -19,15 +19,15 @@ public class Player {
         int tX = world.toTileCord(x);
         int tY = world.toTileCord(y);
         int nX = x+cX;
-        int nY = y+yX;
+        int nY = y+cY;
         int nWX = world.toWorldCord(nX);
         int nWY = world.toWorldCord(nY);
-        int nTX = world.toTileCord(nx);
-        int nTY = world.toTileCode(ny);
+        int nTX = world.toTileCord(nX);
+        int nTY = world.toTileCord(nY);
         int cur = world.getTile(wX, wY, tX, tY);
         int o = world.getTile(nWX, nWY, nTX, nTY);
         if (cur == o) return true;
-        return Tiles.movable(x, y, nX, nY, cur, o);
+        return Tiles.movable(x, y, nX, nY, cur, o, world);
     }
 
     public void pressKey(String key){

@@ -37,19 +37,19 @@ public class World {
         tiles[y][x] = t;
     }
 
-    public int getTile(int wX, int wY, int tX, tY){
-        return tiles[wY][wX].getTile(tx, ty);
+    public int getTile(int wX, int wY, int tX, int tY){
+        return tiles[wY][wX].getTile(tX, tY);
     }
 
     public void setTile(int wX, int wY, int tX, int tY, int v){
-        tiles[y][x].setTile(tX, tY, v);
+        tiles[wY][wX].setTile(tX, tY, v);
     }
 
-    public static int toWorldCord(int c){
+    public int toWorldCord(int c){
         return c/400;
     }
 
-    public static int toTileCord(int c){
+    public int toTileCord(int c){
         return c%400/8;
     }
 
