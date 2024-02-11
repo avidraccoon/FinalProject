@@ -2,9 +2,9 @@ package org.example;
 
 public class GameLoop extends Thread{
     private boolean running;
-
-    public GameLoop(){
-
+    private Game game;
+    public GameLoop(Game game){
+        this.game = game;
     }
 
     public void run(){
@@ -28,13 +28,13 @@ public class GameLoop extends Thread{
     }
 
     private void tick() {
-        Game game = Main.getGame();
         game.players.keySet().forEach(str -> {
             Player player = game.players.get(str);
-            if (player.up){player.y--;}
-            if (player.down){player.y++;}
-            if (player.left){player.x--;}
-            if (player.right){player.x++;}
+            if (player.isPressed("w")){player.y--;}
+            if (player.isPressed("s")){player.y++;}
+            if (player.isPressed("a")){player.x--;}
+            if (player.isPressed("d")){player.x++;}
+            player.applyReleased();
         });
     }
 }
