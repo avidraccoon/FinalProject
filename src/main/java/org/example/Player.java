@@ -13,6 +13,23 @@ public class Player {
         this.y = y;
     }
 
+    public boolean canMove(int cX, int cY, World world){
+        int wX = world.toWorldCord(x);
+        int wY = world.toWorldCord(y);
+        int tX = world.toTileCord(x);
+        int tY = world.toTileCord(y);
+        int nX = x+cX;
+        int nY = y+yX;
+        int nWX = world.toWorldCord(nX);
+        int nWY = world.toWorldCord(nY);
+        int nTX = world.toTileCord(nx);
+        int nTY = world.toTileCode(ny);
+        int cur = world.getTile(wX, wY, tX, tY);
+        int o = world.getTile(nWX, nWY, nTX, nTY);
+        if (cur == o) return true;
+        return Tiles.movable(x, y, nX, nY, cur, o);
+    }
+
     public void pressKey(String key){
         if (keysReleased.contains(key)) keysReleased.remove(key);
         if (!keysPressed.contains(key)) keysPressed.add(key);
